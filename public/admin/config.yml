@@ -8,7 +8,7 @@ backend:
   # This should be the main branch of your repository
   branch: main
   # The site_domain is used for GitHub authentication. It will be provided by the OAuth app.
-  site_domain: jonah3d # e.g., your-username.github.io
+  site_domain: "jonah3d.github.io" # e.g., your-username.github.io
 
 # This defines where Decap CMS looks for media files (like images) you upload.
 media_folder: "public/images/uploads"
