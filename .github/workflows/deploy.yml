@@ -36,8 +36,8 @@ jobs:
       - name: Build React App
         run: npm run build
         env:
-          # CRITICAL: Replace 'my-blog' with your actual repository name
-          PUBLIC_URL: 'https://jonah3d.github.io/my-blog'
+          # This is the correct format for Vite
+          PUBLIC_URL: /my-blog
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
