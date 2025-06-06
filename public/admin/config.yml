@@ -1,0 +1,36 @@
+# public/admin/config.yml
+
+# This is the backend configuration. It tells Decap CMS to use your GitHub repo.
+backend:
+  name: github
+  # Replace this with your own repo: "username/repository-name"
+  repo: "YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME"
+  # This should be the main branch of your repository
+  branch: main
+  # The site_domain is used for GitHub authentication. It will be provided by the OAuth app.
+  site_domain: YOUR_GITHUB_PAGES_URL_WITHOUT_HTTPS # e.g., your-username.github.io
+
+# This defines where Decap CMS looks for media files (like images) you upload.
+media_folder: "public/images/uploads"
+# This is the public path to the media folder.
+public_folder: "/images/uploads"
+
+# This defines the structure of your content.
+collections:
+  # We are creating one collection called "stories".
+  - name: "stories"
+    # The user-friendly name shown in the CMS UI.
+    label: "Stories"
+    # Where the markdown files for this collection will be stored.
+    folder: "_stories"
+    # How to create new files. The slug is a URL-friendly version of the title.
+    create: true
+    # Use the title field to generate the filename.
+    slug: "{{slug}}"
+    # These are the fields your girlfriend will fill out for each story.
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      # The "body" is the main content, using a rich markdown editor.
+      - { label: "Body", name: "body", widget: "markdown" }
