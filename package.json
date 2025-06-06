@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:stories": "node scripts/build-stories.mjs",
+    "build:stories": "node scripts/build-stories.js",
     "build": "npm run build:stories && tsc && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
