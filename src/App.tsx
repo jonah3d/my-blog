@@ -17,7 +17,7 @@ interface Story {
 const initialStories: Story[] = [
     {
         slug: 'welcome-to-the-blog',
-        title: 'Gemini Hy',
+        title: 'Gemini Helper',
         author: 'Your Name',
         date: '2025-06-07',
         content: '<p>This is your very first story. You can edit it or delete it from the CMS. To access the admin panel, go to <code>/admin/</code> in the URL. You can start writing new stories there and they will show up here automatically after a few minutes!</p><p>Happy writing!</p>'
