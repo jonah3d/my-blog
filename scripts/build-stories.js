@@ -31,20 +31,18 @@ const files = fs.readdirSync(storiesDir).filter(file => file.endsWith('.md'));
 files.forEach(file => {
     const filePath = path.join(storiesDir, file);
     const fileContent = fs.readFileSync(filePath, 'utf8');
-
-    // Parse frontmatter and content
     const { data, content } = matter(fileContent);
-
-    // Convert markdown to HTML
     const htmlContent = marked(content);
 
     stories.push({
-        id: path.basename(file, '.md'),
+        // CHANGE THIS LINE: from 'id' to 'slug'
+        slug: path.basename(file, '.md'),
         title: data.title || 'Untitled',
         author: data.author || 'Anonymous',
         date: data.date || new Date().toISOString(),
         content: htmlContent,
-        excerpt: content.substring(0, 200) + '...'
+        // The React app generates the excerpt automatically, so you can remove this line
+        // excerpt: content.substring(0, 200) + '...'
     });
 });
 

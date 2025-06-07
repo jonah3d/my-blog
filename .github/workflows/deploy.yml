@@ -1,3 +1,5 @@
+# .github/workflows/deploy.yml
+
 name: Build and Deploy Blog
 
 on:
@@ -36,6 +38,7 @@ jobs:
       - name: Build React App
         run: npm run build
         env:
+          # This is correctly set for your repo!
           PUBLIC_URL: /my-blog
 
       - name: Setup Pages
