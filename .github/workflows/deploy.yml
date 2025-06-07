@@ -1,54 +1,68 @@
 # .github/workflows/deploy.yml
 
+# A friendly name for the workflow
 name: Build and Deploy Blog
 
+# This section defines the trigger
 on:
+  # Run on pushes to the 'main' branch
   push:
     branches:
       - main
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
+# Sets the permissions for the deployment token
 permissions:
   contents: write
   pages: write
   id-token: write
 
+# Ensures only one deployment runs at a time
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
   build-and-deploy:
+    # Use the latest version of Ubuntu
     runs-on: ubuntu-latest
     steps:
+      # 1. Get the code from the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2. Set up the Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
+      # 3. Install all project dependencies
       - name: Install dependencies
         run: npm install
 
+      # 4. Build the stories JSON file from your markdown
       - name: Build stories from Markdown
         run: npm run build:stories
 
+      # 5. Build the React application for production
       - name: Build React App
         run: npm run build
-        env:
-          # This is correctly set for your repo!
-          PUBLIC_URL: /my-blog
 
+      # 6. Prepare the build artifact for GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # 7. Upload the built site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # The output from 'npm run build' is in the 'dist' folder
           path: './dist'
 
+      # 8. Deploy the uploaded artifact to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
