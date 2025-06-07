@@ -6,7 +6,7 @@ backend:
   # Replace this with your own repo: "username/repository-name"
   repo: "jonah3d/my-blog"
   # This should be the main branch of your repository
-  branch: main
+  branch: master
   # The site_domain is used for GitHub authentication. It will be provided by the OAuth app.
   site_domain: "jonah3d.github.io" # e.g., your-username.github.io
 
